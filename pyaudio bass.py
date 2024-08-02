@@ -1,6 +1,6 @@
+import tkinter as tk
 import numpy as np
 import sounddevice as sd
-import tkinter as tk
 
 class AudioApp:
     def __init__(self, root):
@@ -8,18 +8,18 @@ class AudioApp:
         self.root.title("Audio Faders")
 
         # Initialize variables
-        self.volume = 0.5
-        self.freq = 40
+        self.volume = 0.0
+        self.freq = 30
 
         # Volume Fader
         tk.Label(root, text="Volume").pack()
-        self.volume_fader = tk.Scale(root, from_=0, to_=1, orient=tk.VERTICAL, resolution=0.01, command=self.update_volume)
+        self.volume_fader = tk.Scale(root, from_=0, to_=1, orient=tk.VERTICAL, resolution=0.01, command=self.update_volume, length=300)
         self.volume_fader.set(self.volume)
         self.volume_fader.pack(side=tk.LEFT)
 
         # Frequency Fader
         tk.Label(root, text="Frequency (Hz)").pack()
-        self.freq_fader = tk.Scale(root, from_=40, to_=60, orient=tk.HORIZONTAL, resolution=1, command=self.update_freq)
+        self.freq_fader = tk.Scale(root, from_=30, to_=80, orient=tk.HORIZONTAL, resolution=1, command=self.update_freq, length=300)
         self.freq_fader.set(self.freq)
         self.freq_fader.pack(side=tk.BOTTOM)
 
